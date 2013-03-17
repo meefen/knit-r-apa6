@@ -1,0 +1,7 @@
+% !Rnw root = Master.Rnw
+
+\section{Introduction}
+
+I am going to write my introduction section here \parencite{Tufte2006}. \textcite{Tufte1990} says this section will be automatically embedded in Master.Rnw.
+
+Please note the references above are purely for testing.

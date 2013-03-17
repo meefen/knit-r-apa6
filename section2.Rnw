@@ -1,0 +1,5 @@
+% !Rnw root = Master.Rnw
+
+\section{Section 2}
+
+Write whatever here.

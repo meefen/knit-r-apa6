@@ -1,0 +1,99 @@
+\documentclass[doc]{apa6}\usepackage{knitr}
+
+\usepackage[american]{babel}
+\usepackage{csquotes}
+
+% Figures and tables
+\usepackage[flushleft]{threeparttable} % for notes in tables
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{pbox} % for newline within table cell
+
+% Reference
+\usepackage[style=apa,sortcites=true,sorting=nyt]{biblatex}
+\addbibresource{library.bib} % only support absolute path in .Rnw
+\DeclareLanguageMapping{american}{american-apa}
+
+% Begin: defining possessive textcite
+% http://tex.stackexchange.com/a/22337
+\DeclareNameFormat{labelname:poss}{% Based on labelname from biblatex.def
+  \ifcase\value{uniquename}%
+    \usebibmacro{name:last}{#1}{#3}{#5}{#7}%
+  \or
+    \ifuseprefix
+      {\usebibmacro{name:first-last}{#1}{#4}{#5}{#8}}
+      {\usebibmacro{name:first-last}{#1}{#4}{#6}{#8}}%
+  \or
+    \usebibmacro{name:first-last}{#1}{#3}{#5}{#7}%
+  \fi
+  \usebibmacro{name:andothers}%
+  \ifnumequal{\value{listcount}}{\value{liststop}}{'s}{}}
+
+\DeclareFieldFormat{shorthand:poss}{%
+  \ifnameundef{labelname}{#1's}{#1}}
+
+\DeclareFieldFormat{citetitle:poss}{\mkbibemph{#1}'s}
+
+\DeclareFieldFormat{label:poss}{#1's}
+
+\newrobustcmd*{\posscitealias}{%
+  \AtNextCite{%
+    \DeclareNameAlias{labelname}{labelname:poss}%
+    \DeclareFieldAlias{shorthand}{shorthand:poss}%
+    \DeclareFieldAlias{citetitle}{citetitle:poss}%
+    \DeclareFieldAlias{label}{label:poss}}}
+
+\newrobustcmd*{\posscite}{%
+  \posscitealias%
+  \textcite}
+
+\newrobustcmd*{\Posscite}{\bibsentence\posscite}
+
+\newrobustcmd*{\posscites}{%
+  \posscitealias%
+  \textcites}
+% End: defining possessive textcite
+
+% Opening
+\title{Knit APA Style with LaTeX, knitr and R}
+\shorttitle{Knit APA Style}
+\author{Bodong Chen}
+\affiliation{University of Toronto}
+\leftheader{Chen}
+
+\abstract{[place...holder...]}
+
+\keywords{latex, apa, academic writing, r, reproducible research}
+
+\authornote{Word count: ?.  Correspondence concerning this article should be
+addressed to Bodong Chen, Ontario Institute for Studies in Education, University
+of Toronto.}
+
+\begin{document}
+
+\maketitle
+
+% Knitr option
+
+
+
+% Include sections
+% !Rnw root = Master.Rnw
+
+\section{Introduction}
+
+I am going to write my introduction section here \parencite{Tufte2006}. \textcite{Tufte1990} says this section will be automatically embedded in Master.Rnw.
+
+Please note the references above are purely for testing.
+
+% !Rnw root = Master.Rnw
+
+\section{Section 2}
+
+Write whatever here.
+
+
+\printbibliography
+
+\end{document}
