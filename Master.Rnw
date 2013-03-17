@@ -1,4 +1,4 @@
-\documentclass[doc]{apa6}
+\documentclass[man]{apa6}
 
 \usepackage[american]{babel}
 \usepackage{csquotes}
@@ -9,6 +9,9 @@
 \usepackage{caption}
 \usepackage{subcaption}
 \usepackage{pbox} % for newline within table cell
+
+% hyper links
+% \usepackage{hyperref}
 
 % Reference
 \usepackage[style=apa,sortcites=true,sorting=nyt]{biblatex}
@@ -56,19 +59,18 @@
 % End: defining possessive textcite
 
 % Opening
-\title{Knit APA Style with LaTeX, knitr and R}
+\title{Knit APA Style with \LaTeX, knitr and R}
 \shorttitle{Knit APA Style}
 \author{Bodong Chen}
 \affiliation{University of Toronto}
 \leftheader{Chen}
 
-\abstract{[place...holder...]}
+\abstract{Starting my journey of doctoral thesis writing, I decided to rethink my academic writing environment which for years has been mainly composed of Microsoft Word and Google Documents. After some research, I finally decided to do something different for my thesis writing. In a nutshell, I am going to do everything (i.e., data analysis and actual writing) in LaTeX and R within the RStudio environment, with \emph{knitr} as a wonderful bridge to ``knit'' them together. I am pretty happy with this setup, and believe it is much superior to my old writing environment especially for a bigger writing project like a thesis. This article, together with its code hosted on Github\footnote{https://github.com/dirkchen/knit-r-apa6}, aims to demonstrate the benefits and easiness of writing APA manuscripts in LaTeX and R. More specifically, this article briefly introduces key issues including environment setup, APA formatting with LaTeX, data analysis with R, and results integration with knitr. At the end, it will also describe ways to export produced documents to various formats to support collaboration with colleagues using Word-like software. My little ambition is anyone with no prior experience with LaTeX or R should feel prepared to play with this environment after reading this article.}
 
 \keywords{latex, apa, academic writing, r, reproducible research}
 
-\authornote{Word count: ?.  Correspondence concerning this article should be
-addressed to Bodong Chen, Ontario Institute for Studies in Education, University
-of Toronto.}
+\authornote{Word count: 2000.  Correspondence concerning this article should be
+addressed to Bodong Chen, bodong.chen@utoronto.ca, 252 Bloor St W, Institute for Knowledge Innovation and Technology, OISE/University of Toronto.}
 
 \begin{document}
 
@@ -83,6 +85,14 @@ opts_knit$set(self.contained=FALSE)
 <<sec1, child='section1.Rnw'>>=
 @
 <<sec2, child='section2.Rnw'>>=
+@
+<<sec3, child='section3.Rnw'>>=
+@
+<<sec4, child='section4.Rnw'>>=
+@
+<<sec5, child='section5.Rnw'>>=
+@
+<<sec6, child='section6.Rnw'>>=
 @
 
 \printbibliography

@@ -1,5 +1,28 @@
 % !Rnw root = Master.Rnw
 
-\section{Section 2}
+\section{Environment Setup}
 
-Write whatever here.
+\subsection{Required Software Packages}
+
+This environment requires a number of software packages.
+
+\begin{APAitemize}
+\item LaTeX
+\item R (base)
+\item RStudio
+\item R packages: knitr, apa6, xtable, ggplot2
+\item git
+\item Reference management tool such as Mendeley and RefJab
+\end{APAitemize}
+
+\subsection{Workflow in RStudio}
+
+http://www.rstudio.com/ide/docs/
+
+\subsection{Working with Chapters or Sections}
+
+\subsection{Managing References}
+
+bibtex, Mendeley, ...
+
+\subsection{Version Controlling with Git}

@@ -1,7 +1,28 @@
 % !Rnw root = Master.Rnw
 
-\section{Introduction}
+\section{Why LaTeX and R}
 
-I am going to write my introduction section here \parencite{Tufte2006}. \textcite{Tufte1990} says this section will be automatically embedded in Master.Rnw.
+As far as I know, only two colleagues in my department are using R\footnote{http://www.r-project.org/}, and I am probably the only person who uses LaTeX\footnote{http://www.latex-project.org/}. 
+This situation is not surprising at all because working with LaTeX and R is not common in the field of education, or even social sciences in general. 
+Without the need to deal with mathematic equations like our science or engineering colleagues, why should we suffer the pains of learning ``alien languages'' like LaTeX and R which are created for ``geeks''?
+However, another kind of suffering might be widely experience by colleagues in my field. 
+We constanly find ourselves typesetting our manuscripts for all kinds of creative formatting requirements we encounter in our adacemic lives. 
+Even people in my field usually follows an established standard, i.e., APA Style, dealing with headings, numbering of pages and headings is still a pain. 
+Moreover, I feel increasingly troublesome working in Microsoft Word and SPSS especially for big writing projects like a thesis, finding myself constantly switching between pieces of software, tweaking data analysis results and inserting them as figures and tables into the manuscript.
+At the corner of launching my PhD dissertation writing project, which is expected to go beyond 200 pages based on my impression of my field, I am firmly convinced I should try something else that is less painful.
 
-Please note the references above are purely for testing.
+Luckily, I got to know LaTeX around two year ago and then R eight months ago, which now turn to my Swiss Army knife for academic writing (and data analysis). 
+My main experience with Latex was writing my comprehensive exam last year\footnote{My blog post about writing comps: http://bodongchen.com/blog/?p=200}. 
+And my R knowledge is also limited as I still constantly find myself doing basic stuff of R in stupid ways. 
+Even though I am not an expert in either, I had a lot of fun with them (especially R\footnote{My blog posts related to R: http://bodongchen.com/blog/?cat=56}). 
+However, LaTeX and R have been thought to live in two separate worlds---one for typesetting and the other for statistical data analysis---until one day I got to know \emph{knitr}\footnote{http://yihui.name/knitr/}. 
+Knitr is an R package for dynamic report generation. 
+It builds on a package called Sweave\footnote{http://www.stat.uni-muenchen.de/~leisch/Sweave/}, combining features of Sweave and its other add-ons into one single package. 
+This work is also closed linked to the notion of reproducible research \parencite{Peng2006}. 
+With knitr, people can combine data and analysis into final reports and make research fully reproducible, for later reproduction by both themselves and their interested readers. 
+Knitr became the final piece that convinced me an integrated writing environment (IWE) is possible. 
+The main idea is I could write manuscripts in LaTeX, embed data analysis as chuncks of R code into LaTeX with knitr/Sweave, and compile everything into a PDF for sharing or publication. 
+
+Inspired by \posscite{zahn2006learning} effort to document ``sweaving'' in APA Style, I decided to document my endeavor of ``kniting'' in APA Style. 
+Because his document was written almost five years ago, hopefully my demo could show a few improved techniques. 
+More importantly, rather than writing and sharing a PDF manual, I am also sharing the actual code of the article I am writing right now so it becomes a self-contained learning material for colleagues who may wish to try it. 

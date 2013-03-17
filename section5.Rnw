@@ -1,0 +1,22 @@
+% !Rnw root = Master.Rnw
+
+\section{Exporting to other formats}
+
+pandoc
+
+online converting tool
+
+pdftohtml
+
+sudo apt-get install xpdf
+sudo apt-get install poppler-utils % install pdftohtml
+
+pdftohtml Master.pdf Master.html % simple results without figures or tables
+pdftohtml -c Master.pdf Master.html % complex results, almost exactly the same as PDF
+
+\begin{figure}
+\centering
+\includegraphics[width=0.8\textwidth]{qualityvstime.png}
+\caption{Quality vs. Time}
+\label{fig:qualityvstime}
+\end{figure}

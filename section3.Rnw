@@ -1,0 +1,5 @@
+% !Rnw root = Master.Rnw
+
+\section{Formatting an APA Document}
+
+http://dw.tug.org/pracjourn/2012-1/beitzel/beitzel.pdf

@@ -1,0 +1,76 @@
+% !Rnw root = Master.Rnw
+
+\section{Dynamic results integration with knitr}
+
+Data analysis in R chunks:
+
+<<echo=TRUE, results='markup'>>=
+data(cars) # load dataset
+str(cars) # structure of data frame
+print(cor(cars$speed,cars$dist)) # compute correlation
+@
+
+Integrate results in text:
+
+The average speed was \Sexpr{mean(cars$speed)}, with a standard deviation of \Sexpr{sd(cars$speed)}. The average level of distance was \Sexpr{mean(cars$dist)}, with a standard deviation of \Sexpr{sd(cars$dist)}. The correlation between income and education was \Sexpr{cor(cars$speed,cars$dist)}.
+
+\subsection{Embedding R code of data analysis}
+
+\subsection{Including tables}
+
+Insert a table containing analysis results with xtable package:
+
+<<table2, echo=FALSE, results="asis">>=
+library(xtable)
+data(iris)
+means <- c(mean(iris$Sepal.Length), mean(iris$Sepal.Width))
+sds <- c(sd(iris$Sepal.Length), sd(iris$Sepal.Width))
+mins <- c(min(iris$Sepal.Length), min(iris$Sepal.Width))
+maxs <- c(max(iris$Sepal.Length), max(iris$Sepal.Width))
+descriptives <- data.frame(means, sds, mins, maxs, 
+                           row.names=c("Sepal Length","Sepal Width"))
+names(descriptives) <- c("Mean","SD","Min","Max")
+descriptives.table <- xtable(descriptives, caption="Descriptive Statistics", label="tab:descriptive")
+print(descriptives.table, 
+      include.rownames=TRUE, 
+      caption.placement="top", 
+      table.placement="!htb")
+@
+
+Insert a pure text table with xtable:
+
+<<table1, echo=FALSE, results='asis'>>=
+library(xtable)
+groups <- c("Grade 3 2011", " ", "  ", "Grade 3 2010")
+phase1 <- c("KB", "Pedagogical Intervention", "Promisingness Judgments", "KB")
+phase2 <- c("KB", "Promisingness Judgments", "", "KB")
+phase3 <- c("KB", "", "", "KB")
+procedures <- data.frame(phase1, phase2, phase3, row.names=groups)
+names(procedures) <- c("Phase 1", "Phase 2", "Phase 3")
+procedures.table <- xtable(procedures, 
+                           caption="The three-phase research design", 
+                           label="tab:procedures", 
+                           hline.after = c(1, 4))
+print(procedures.table, 
+      include.rownames=TRUE, 
+      caption.placement="top", 
+      table.placement="!htb")
+@
+
+\subsection{Including figures}
+
+Insert a figure produced by ggplot2 in R:
+
+<<figure, echo=FALSE, results='hide'>>=
+pdf(file="scatterplot.pdf",width=6,height=5)
+library(ggplot2)
+qplot(Sepal.Width, Sepal.Length, data=iris, colour=Species, xlab="Sepal Width", ylab="Sepal Length")
+dev.off()
+@
+
+\begin{figure}
+\centering
+\includegraphics[width=6in,height=5in]{scatterplot.pdf}
+\caption{A scatterplot of sepal width and length of iris species.}
+\label{fig:scatterplot}
+\end{figure}
